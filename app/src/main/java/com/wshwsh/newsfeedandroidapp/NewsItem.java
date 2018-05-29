@@ -4,7 +4,10 @@ public class NewsItem {
     private String newsTitle;
     private String newsCategory;
     private String newsUrl;
+    //constructor without paramteres
+    public NewsItem (){
 
+    }
     public NewsItem(String newsTitle, String newsCategory, String newsUrl) {
         this.newsTitle = newsTitle;
         this.newsCategory = newsCategory;
