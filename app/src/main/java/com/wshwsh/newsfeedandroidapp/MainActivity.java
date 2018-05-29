@@ -1,32 +1,25 @@
 package com.wshwsh.newsfeedandroidapp;
 
+import android.app.LoaderManager;
 import android.content.Intent;
+import android.content.Loader;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.LoaderManager.LoaderCallbacks;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<NewsItem>> {
     private NewsItemAdapter newsAdapter;
-
+    private static final int EARTHQUAKE_LOADER_ID = 1;
+    private static final String USGS_REQUEST_URL = "http://content.guardianapis.com/search?q=debates&api-key=test";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
         newsAdapter = new NewsItemAdapter(this, new ArrayList<NewsItem>());
         ListView newsList = findViewById(R.id.newsList);
         newsList.setAdapter(newsAdapter);
-        GetNewsTask getNews = new GetNewsTask();
-        getNews.execute("http://content.guardianapis.com/search?q=debates&api-key=test");
+        //getNews.execute("http://content.guardianapis.com/search?q=debates&api-key=test");
+        LoaderManager loaderManager = getLoaderManager();
+        loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
+
         newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -48,26 +43,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private class GetNewsTask extends AsyncTask<String, Void, List<NewsItem>> {
+    @Override
+    public Loader<List<NewsItem>> onCreateLoader(int i, Bundle bundle) {
+        // Create a new loader for the given URL
+        return new NewsLoader(this, USGS_REQUEST_URL);
+    }
 
+    @Override
+    public void onLoadFinished(Loader<List<NewsItem>> loader, List<NewsItem> data) {
+        // Clear the adapter of previous earthquake data
+        newsAdapter.clear();
 
-        @Override
-        protected List<NewsItem> doInBackground(String... urls) {
-            if (urls.length < 1 || urls[0] == null) {
-                return null;
-            }
-
-            List<NewsItem> result = QueryUtil.fetchNewsData(urls[0]);
-            return result;
+        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+        // data set. This will trigger the ListView to update.
+        if (data != null && !data.isEmpty()) {
+            newsAdapter.addAll(data);
         }
+    }
 
-        @Override
-        protected void onPostExecute(List<NewsItem> data) {
-            //do any post task operation
-            newsAdapter.clear();
-            if (data != null && !data.isEmpty()) {
-                newsAdapter.addAll(data);
-            }
-        }
+    @Override
+    public void onLoaderReset(Loader<List<NewsItem>> loader) {
+        // Loader reset, so we can clear out our existing data.
+        newsAdapter.clear();
     }
 }
