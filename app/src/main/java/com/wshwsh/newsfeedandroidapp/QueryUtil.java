@@ -107,7 +107,7 @@ public class QueryUtil {
 
             JSONObject topLevel = new JSONObject(newsJSON);
             JSONObject main = topLevel.getJSONObject("response");
-            JSONArray newsArray = topLevel.getJSONArray("results");
+            JSONArray newsArray = main.getJSONArray("results");
             for(int i = 0; i < newsArray.length();i++){
                 JSONObject jsonItem = newsArray.getJSONObject(i);
                 NewsItem newsItem = new NewsItem();

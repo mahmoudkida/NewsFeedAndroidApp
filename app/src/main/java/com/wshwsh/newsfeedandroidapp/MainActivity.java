@@ -25,13 +25,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private NewsItemAdapter mAdapter;
+    private NewsItemAdapter newsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        NewsItemAdapter newsAdapter = new NewsItemAdapter(this, new ArrayList<NewsItem>());
+        newsAdapter = new NewsItemAdapter(this, new ArrayList<NewsItem>());
         ListView newsList = findViewById(R.id.newsList);
         newsList.setAdapter(newsAdapter);
         GetNewsTask getNews = new GetNewsTask();
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                NewsItem currentNews = mAdapter.getItem(i);
+                NewsItem currentNews = newsAdapter.getItem(i);
                 Intent httpIntent = new Intent(Intent.ACTION_VIEW);
                 httpIntent.setData(Uri.parse(currentNews.getNewsUrl()));
                 startActivity(httpIntent);
@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<NewsItem> data) {
             //do any post task operation
-            mAdapter.clear();
+            newsAdapter.clear();
             if (data != null && !data.isEmpty()) {
-                mAdapter.addAll(data);
+                newsAdapter.addAll(data);
             }
         }
     }

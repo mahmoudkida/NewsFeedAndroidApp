@@ -20,8 +20,11 @@ public class NewsItemAdapter  extends ArrayAdapter<NewsItem> {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.news_item, parent, false);
         }
+        NewsItem news = getItem(position);
         TextView newsHeader =  listItemView.findViewById(R.id.newsHeader);
         TextView newsCategory =  listItemView.findViewById(R.id.newsCategory);
+        newsHeader.setText(news.getNewsTitle());
+        newsCategory.setText(news.getNewsCategory());
 
 
 
