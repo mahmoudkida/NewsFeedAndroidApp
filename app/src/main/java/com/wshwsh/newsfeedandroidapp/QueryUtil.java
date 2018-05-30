@@ -39,12 +39,10 @@ public class QueryUtil {
      */
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
-
         // If the URL is null, then return early.
         if (url == null) {
             return jsonResponse;
         }
-
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         try {
@@ -53,7 +51,6 @@ public class QueryUtil {
             urlConnection.setConnectTimeout(15000 /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
-
             // If the request was successful (response code 200),
             // then read the input stream and parse the response.
             if (urlConnection.getResponseCode() == 200) {
@@ -69,13 +66,11 @@ public class QueryUtil {
                 urlConnection.disconnect();
             }
             if (inputStream != null) {
-
                 inputStream.close();
             }
         }
         return jsonResponse;
     }
-
 
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
@@ -96,45 +91,36 @@ public class QueryUtil {
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
         }
-
         // Create an empty ArrayList that we can start adding earthquakes to
         List<NewsItem> newsList = new ArrayList<>();
-
         // Try to parse the JSON response string. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
-
             JSONObject topLevel = new JSONObject(newsJSON);
             JSONObject main = topLevel.getJSONObject("response");
             JSONArray newsArray = main.getJSONArray("results");
-            for(int i = 0; i < newsArray.length();i++){
+            for (int i = 0; i < newsArray.length(); i++) {
                 JSONObject jsonItem = newsArray.getJSONObject(i);
                 NewsItem newsItem = new NewsItem();
-
                 newsItem.setNewsTitle(jsonItem.getString("webTitle"));
                 newsItem.setNewsCategory(jsonItem.getString("sectionName"));
                 newsItem.setNewsUrl(jsonItem.getString("webUrl"));
                 newsList.add(newsItem);
             }
-
-
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
         }
-
         // Return the list of earthquakes
         return newsList;
     }
 
-
     public static List<NewsItem> fetchNewsData(String requestUrl) {
         // Create URL object
         URL url = createUrl(requestUrl);
-
         // Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
         try {
@@ -142,10 +128,8 @@ public class QueryUtil {
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
-
         // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
         List<NewsItem> newsItems = extractNewsFromJson(jsonResponse);
-
         // Return the list onewsItemsf {@link Earthquake}s
         return newsItems;
     }
