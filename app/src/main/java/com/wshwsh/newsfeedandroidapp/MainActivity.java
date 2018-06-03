@@ -1,5 +1,6 @@
 package com.wshwsh.newsfeedandroidapp;
 
+import android.app.Activity;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,22 +25,33 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        newsAdapter = new NewsItemAdapter(this, new ArrayList<NewsItem>());
         ListView newsList = findViewById(R.id.newsList);
-        newsList.setAdapter(newsAdapter);
-        newsList.setEmptyView(findViewById(R.id.emptyListView));
-        //getNews.execute("http://content.guardianapis.com/search?q=debates&api-key=test");
-        LoaderManager loaderManager = getLoaderManager();
-        loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
-        newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                NewsItem currentNews = newsAdapter.getItem(i);
-                Intent httpIntent = new Intent(Intent.ACTION_VIEW);
-                httpIntent.setData(Uri.parse(currentNews.getNewsUrl()));
-                startActivity(httpIntent);
-            }
-        });
+
+        if(CheckNetwork.isInternetAvailable(this.getApplicationContext())) //returns true if internet available
+        {
+            newsAdapter = new NewsItemAdapter(this, new ArrayList<NewsItem>());
+            newsList.setAdapter(newsAdapter);
+            newsList.setEmptyView(findViewById(R.id.emptyListView));
+            //getNews.execute("http://content.guardianapis.com/search?q=debates&api-key=test");
+            LoaderManager loaderManager = getLoaderManager();
+            loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
+            newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    NewsItem currentNews = newsAdapter.getItem(i);
+                    Intent httpIntent = new Intent(Intent.ACTION_VIEW);
+                    httpIntent.setData(Uri.parse(currentNews.getNewsUrl()));
+                    startActivity(httpIntent);
+                }
+            });
+        }
+        else
+        {
+            newsList.setVisibility(View.GONE);
+            TextView noInternetView = findViewById(R.id.noInternetView);
+            noInternetView.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override
