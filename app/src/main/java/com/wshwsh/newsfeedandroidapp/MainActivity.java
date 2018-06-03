@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         newsAdapter = new NewsItemAdapter(this, new ArrayList<NewsItem>());
         ListView newsList = findViewById(R.id.newsList);
         newsList.setAdapter(newsAdapter);
+        newsList.setEmptyView(findViewById(R.id.emptyListView));
         //getNews.execute("http://content.guardianapis.com/search?q=debates&api-key=test");
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);

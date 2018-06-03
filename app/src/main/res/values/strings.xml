@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">News Feed Android App</string>
+    <string name="empty_news">There is no news to see here!</string>
 </resources>
