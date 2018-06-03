@@ -24,8 +24,10 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
         NewsItem news = getItem(position);
         TextView newsHeader = listItemView.findViewById(R.id.newsHeader);
         TextView newsCategory = listItemView.findViewById(R.id.newsCategory);
+        TextView newDate = listItemView.findViewById(R.id.newsDate);
         newsHeader.setText(news.getNewsTitle());
         newsCategory.setText(news.getNewsCategory());
+        newDate.setText(news.getNewsDate());
         return listItemView;
     }
 }
