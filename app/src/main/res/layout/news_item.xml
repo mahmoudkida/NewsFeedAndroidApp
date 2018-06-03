@@ -30,6 +30,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newsHeader" />
 
+    <TextView
+        android:id="@+id/newsDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_weight="1"
+        android:paddingBottom="15dp"
+        app:layout_constraintLeft_toRightOf="@id/newsCategory"
+        app:layout_constraintTop_toBottomOf="@+id/newsHeader" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
