@@ -22,8 +22,6 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.wshwsh.newsfeedandroidapp.R;
-
 public class SettingsActivity extends AppCompatActivity {
 
     @Override

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ProgressBar android:id="@+id/loadingPanel"
+    <ProgressBar
+        android:id="@+id/loadingPanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:indeterminate="true" />
@@ -14,21 +15,22 @@
         android:id="@+id/newsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
     <TextView
         android:id="@+id/emptyListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:text="@string/empty_news"
         android:textAlignment="center"
-        android:gravity="center"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/noInternetView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textAlignment="center"
         android:gravity="center"
         android:text="@string/no_internet"
+        android:textAlignment="center"
         android:visibility="gone" />
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,5 @@
 package com.wshwsh.newsfeedandroidapp;
 
-import android.app.Activity;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Intent;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         setContentView(R.layout.activity_main);
         ListView newsList = findViewById(R.id.newsList);
 
-        if(CheckNetwork.isInternetAvailable(this.getApplicationContext())) //returns true if internet available
+        if (CheckNetwork.isInternetAvailable(this.getApplicationContext())) //returns true if internet available
         {
             newsAdapter = new NewsItemAdapter(this, new ArrayList<NewsItem>());
             newsList.setAdapter(newsAdapter);
@@ -48,9 +47,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
                     startActivity(httpIntent);
                 }
             });
-        }
-        else
-        {
+        } else {
             newsList.setVisibility(View.GONE);
             TextView noInternetView = findViewById(R.id.noInternetView);
             noInternetView.setVisibility(View.VISIBLE);

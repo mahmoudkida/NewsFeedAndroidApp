@@ -34,7 +34,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
         ImageView newsImage = listItemView.findViewById(R.id.newsImage);
         newsImage.setImageResource(R.drawable.default_image_thumbnail);
-        new ImageDownloader(newsImage,news.getNewsImage()).execute();
+        new ImageDownloader(newsImage, news.getNewsImage()).execute();
         return listItemView;
     }
 }
