@@ -2,4 +2,7 @@
     <string name="app_name">News Feed Android App</string>
     <string name="empty_news">There is no news to see here!</string>
     <string name="no_internet">No Internet Connection...</string>
+    <string name="settings_menu_item">News Settings</string>
+    <string name="settings_title">News Settings</string>
+
 </resources>
