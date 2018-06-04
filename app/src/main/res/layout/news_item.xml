@@ -8,39 +8,33 @@
         android:id="@+id/newsHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_weight="1"
-        android:paddingEnd="30dp"
-        android:paddingRight="30dp"
-        android:textSize="22sp"
+       style="@style/NewsTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/newsAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       style="@style/NewsAuthor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newsHeader" />
 
     <TextView
         android:id="@+id/newsCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:paddingBottom="15dp"
+        style="@style/NewsMetaData"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newsHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/newsAuthor" />
 
     <TextView
         android:id="@+id/newsDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:paddingBottom="15dp"
+       style="@style/NewsMetaData"
         app:layout_constraintLeft_toRightOf="@id/newsCategory"
-        app:layout_constraintTop_toBottomOf="@+id/newsHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/newsAuthor" />
 
     <ImageView
         android:id="@+id/imageView"

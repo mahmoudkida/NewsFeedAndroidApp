@@ -5,16 +5,18 @@ public class NewsItem {
     private String newsCategory;
     private String newsUrl;
     private String newsDate;
+    private String newsAuthor;
 
     //constructor without paramteres
     public NewsItem() {
     }
 
-    public NewsItem(String newsTitle, String newsCategory, String newsUrl, String newsDate) {
+    public NewsItem(String newsTitle, String newsCategory, String newsUrl, String newsDate, String newsAuthor) {
         this.newsTitle = newsTitle;
         this.newsCategory = newsCategory;
         this.newsUrl = newsUrl;
         this.newsDate = newsDate;
+        this.newsAuthor = newsAuthor;
     }
 
     public String getNewsTitle() {
@@ -47,5 +49,13 @@ public class NewsItem {
 
     public void setNewsDate(String newsDate) {
         this.newsDate = newsDate;
+    }
+
+    public String getNewsAuthor() {
+        return newsAuthor;
+    }
+
+    public void setNewsAuthor(String newsAuthor) {
+        this.newsAuthor = newsAuthor;
     }
 }

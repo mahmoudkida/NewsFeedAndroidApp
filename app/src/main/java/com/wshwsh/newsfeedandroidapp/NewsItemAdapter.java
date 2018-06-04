@@ -1,6 +1,7 @@
 package com.wshwsh.newsfeedandroidapp;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +26,12 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
         TextView newsHeader = listItemView.findViewById(R.id.newsHeader);
         TextView newsCategory = listItemView.findViewById(R.id.newsCategory);
         TextView newDate = listItemView.findViewById(R.id.newsDate);
+        TextView newAuthor = listItemView.findViewById(R.id.newsAuthor);
         newsHeader.setText(news.getNewsTitle());
         newsCategory.setText(news.getNewsCategory());
         newDate.setText(news.getNewsDate());
+        newAuthor.setText(news.getNewsAuthor());
+
         return listItemView;
     }
 }

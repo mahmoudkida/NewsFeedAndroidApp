@@ -4,5 +4,5 @@
     <string name="no_internet">No Internet Connection...</string>
     <string name="settings_menu_item">News Settings</string>
     <string name="settings_title">News Settings</string>
-
+    <string name="AuthorLabel">Author: </string>
 </resources>

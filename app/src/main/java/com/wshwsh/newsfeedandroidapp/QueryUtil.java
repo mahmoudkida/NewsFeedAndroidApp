@@ -112,6 +112,11 @@ public class QueryUtil {
                 Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(jsonItem.getString("webPublicationDate"));
                 String formattedDate = new SimpleDateFormat("dd MMM yyyy").format(date);
                 newsItem.setNewsDate(formattedDate);
+
+                //get news author
+                JSONArray tagsList = jsonItem.getJSONArray("tags");
+                JSONObject tagItem = tagsList.getJSONObject(0);
+                newsItem.setNewsAuthor(tagItem.getString("webTitle"));
                 newsList.add(newsItem);
             }
         } catch (JSONException e) {
