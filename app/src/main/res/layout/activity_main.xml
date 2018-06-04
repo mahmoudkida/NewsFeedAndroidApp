@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ProgressBar android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:indeterminate="true" />
+
     <ListView
         android:id="@+id/newsList"
         android:layout_width="match_parent"

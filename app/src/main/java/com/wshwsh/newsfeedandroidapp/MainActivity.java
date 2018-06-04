@@ -109,11 +109,16 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         if (data != null && !data.isEmpty()) {
             newsAdapter.addAll(data);
         }
+        findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+
     }
 
     @Override
     public void onLoaderReset(Loader<List<NewsItem>> loader) {
         // Loader reset, so we can clear out our existing data.
+        findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
+
         newsAdapter.clear();
+
     }
 }
