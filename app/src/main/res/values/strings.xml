@@ -5,4 +5,6 @@
     <string name="settings_menu_item">News Settings</string>
     <string name="settings_title">News Settings</string>
     <string name="AuthorLabel">Author: </string>
+    <string name="ArrowDescription">Arrow icon to indecate pen new tab</string>
+    <string name="NewsImageDescrition">News Main Image</string>
 </resources>

@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 public class QueryUtil {
-    static final String LOG_TAG = QueryUtil.class.getSimpleName();
+    private static final String LOG_TAG = QueryUtil.class.getSimpleName();
 
     /**
      * Returns new URL object from the given string URL.
@@ -117,6 +117,10 @@ public class QueryUtil {
                 JSONArray tagsList = jsonItem.getJSONArray("tags");
                 JSONObject tagItem = tagsList.getJSONObject(0);
                 newsItem.setNewsAuthor(tagItem.getString("webTitle"));
+
+                //get news image
+                JSONObject fields = jsonItem.getJSONObject("fields");
+                newsItem.setNewsImage(fields.getString("thumbnail"));
                 newsList.add(newsItem);
             }
         } catch (JSONException e) {

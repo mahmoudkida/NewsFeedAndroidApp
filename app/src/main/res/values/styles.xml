@@ -22,11 +22,12 @@
     </style>
     <style name="NewsTitle">
         <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">12dp</item>
         <item name="android:layout_marginStart">8dp</item>
         <item name="android:layout_marginTop">12dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:paddingEnd">30dp</item>
         <item name="android:paddingRight">30dp</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 </resources>

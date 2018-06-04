@@ -6,17 +6,20 @@ public class NewsItem {
     private String newsUrl;
     private String newsDate;
     private String newsAuthor;
+    private String newsImage;
+
 
     //constructor without paramteres
     public NewsItem() {
     }
 
-    public NewsItem(String newsTitle, String newsCategory, String newsUrl, String newsDate, String newsAuthor) {
+    public NewsItem(String newsTitle, String newsCategory, String newsUrl, String newsDate, String newsAuthor, String newsImage) {
         this.newsTitle = newsTitle;
         this.newsCategory = newsCategory;
         this.newsUrl = newsUrl;
         this.newsDate = newsDate;
         this.newsAuthor = newsAuthor;
+        this.newsImage = newsImage;
     }
 
     public String getNewsTitle() {
@@ -57,5 +60,13 @@ public class NewsItem {
 
     public void setNewsAuthor(String newsAuthor) {
         this.newsAuthor = newsAuthor;
+    }
+
+    public String getNewsImage() {
+        return newsImage;
+    }
+
+    public void setNewsImage(String newsImage) {
+        this.newsImage = newsImage;
     }
 }

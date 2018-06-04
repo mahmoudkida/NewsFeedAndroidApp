@@ -4,35 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/newsHeader"
+    <ImageView
+        android:id="@+id/newsImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       style="@style/NewsTitle"
+        android:contentDescription="@string/NewsImageDescrition"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:maxWidth="@android:dimen/thumbnail_width"
+        />
+
+    <TextView
+        android:id="@+id/newsHeader"
+        style="@style/NewsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintRight_toRightOf="@id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/newsImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/newsAuthor"
+        style="@style/NewsAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       style="@style/NewsAuthor"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintRight_toRightOf="@id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/newsImage"
         app:layout_constraintTop_toBottomOf="@+id/newsHeader" />
 
     <TextView
         android:id="@+id/newsCategory"
+        style="@style/NewsMetaData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/NewsMetaData"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintRight_toRightOf="@id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/newsImage"
         app:layout_constraintTop_toBottomOf="@+id/newsAuthor" />
 
     <TextView
         android:id="@+id/newsDate"
+        style="@style/NewsMetaData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       style="@style/NewsMetaData"
         app:layout_constraintLeft_toRightOf="@id/newsCategory"
         app:layout_constraintTop_toBottomOf="@+id/newsAuthor" />
 
@@ -42,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
-        android:contentDescription="Arrow icon to indecate pen new tab"
+        android:contentDescription="@string/ArrowDescription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
