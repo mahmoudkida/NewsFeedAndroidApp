@@ -8,14 +8,13 @@
         android:key="@string/settings_news_entries_key"
         android:selectAllOnFocus="true"
         android:title="@string/settings_news_entries_label" />
-    <!--<PreferenceCategory-->
-        <!--android:title="News Category">-->
-        <!--<ListPreference-->
-            <!--android:title="Pick news category you prefer"-->
-            <!--android:key="listPref"-->
-            <!--android:defaultValue="4"-->
-            <!--android:entries="@array/listArray"-->
-            <!--android:entryValues="@array/listValues" />-->
-    <!--</PreferenceCategory>-->
+    <PreferenceCategory
+        android:title="@string/settings_news_categories_label">
+        <ListPreference
+            android:key="@string/settings_news_categories_key"
+            android:defaultValue="@string/settings_news_categories_default"
+            android:entries="@array/settings_order_by_labels"
+            android:entryValues="@array/settings_order_by_values" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

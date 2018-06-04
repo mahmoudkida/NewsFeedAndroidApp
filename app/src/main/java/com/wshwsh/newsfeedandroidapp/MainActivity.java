@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<NewsItem>> {
     private static final int EARTHQUAKE_LOADER_ID = 1;
-    private static final String REQUEST_URL = "https://content.guardianapis.com/search?section=technology&show-tags=contributor&show-fields=thumbnail&api-key=a70a53c4-d46a-484c-957b-95ac3120c0a5";
+    private static final String REQUEST_URL = "https://content.guardianapis.com/search?show-tags=contributor&show-fields=thumbnail&api-key=a70a53c4-d46a-484c-957b-95ac3120c0a5";
     private NewsItemAdapter newsAdapter;
 
     @Override
@@ -87,10 +87,15 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
                 getString(R.string.settings_news_entries_key),
                 getString(R.string.settings_news_entries_default));
 
+        String newsCategories = sharedPrefs.getString(
+                getString(R.string.settings_news_categories_key),
+                getString(R.string.settings_news_entries_default));
+
         // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         uriBuilder.appendQueryParameter("page-size", newsEntries);
+        uriBuilder.appendQueryParameter("section", newsCategories);
         // Create a new loader for the given URL
         return new NewsLoader(this, uriBuilder.toString());
     }

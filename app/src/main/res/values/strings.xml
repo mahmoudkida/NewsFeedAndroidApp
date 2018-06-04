@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">News Feed Android App</string>
     <string name="empty_news">There is no news to see here!</string>
-    <string name="no_internet">No Internet Connection...</string>
+    <string name="no_internet">No Internet Connection…</string>
     <string name="settings_menu_item">News Settings</string>
     <string name="settings_title">News Settings</string>
     <string name="AuthorLabel">Author: </string>
@@ -10,4 +10,15 @@
     <string name="settings_news_entries_label">Number of news entries</string>
     <string name="settings_news_entries_default" translatable="false">10</string>
     <string name="settings_news_entries_key" translatable="false">news_entries</string>
+
+    <string name="settings_category_football_label">Football</string>
+    <string name="settings_category_football_value" translatable="false">football</string>
+    <string name="settings_category_technology_label">Technology &amp; Games</string>
+    <string name="settings_category_technology_value" translatable="false">technology</string>
+    <string name="settings_category_politics_label">Politics</string>
+    <string name="settings_category_politics_value" translatable="false">politics</string>
+    <string name="settings_news_categories_label">Select News Category</string>
+    <string name="settings_news_categories_key">news_categories_settings</string>
+    <string name="settings_news_categories_default" translatable="false">technology</string>
+
 </resources>
