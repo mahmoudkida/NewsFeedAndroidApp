@@ -63,7 +63,7 @@ public class QueryUtil {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the news JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -94,7 +94,7 @@ public class QueryUtil {
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
         }
-        // Create an empty ArrayList that we can start adding earthquakes to
+        // Create an empty ArrayList that we can start adding news to
         List<NewsItem> newsList = new ArrayList<>();
         // Try to parse the JSON response string. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
@@ -127,7 +127,7 @@ public class QueryUtil {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+            Log.e("QueryUtils", "Problem parsing the news JSON results", e);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -145,9 +145,9 @@ public class QueryUtil {
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
-        // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
+        // Extract relevant fields from the JSON response and create a list of {@link news}s
         List<NewsItem> newsItems = extractNewsFromJson(jsonResponse);
-        // Return the list onewsItemsf {@link Earthquake}s
+        // Return the list onewsItemsf {@link news}s
         return newsItems;
     }
 }
