@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<NewsItem>> {
-    private static final int EARTHQUAKE_LOADER_ID = 1;
-    private static final String REQUEST_URL = "https://content.guardianapis.com/search?show-tags=contributor&show-fields=thumbnail&api-key=a70a53c4-d46a-484c-957b-95ac3120c0a5";
+    private static final int NEWS_LOADER_ID = 1;
+    private static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/search?show-tags=contributor&show-fields=thumbnail&api-key=a70a53c4-d46a-484c-957b-95ac3120c0a5";
     private NewsItemAdapter newsAdapter;
 
     @Override
@@ -35,9 +35,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
             newsAdapter = new NewsItemAdapter(this, new ArrayList<NewsItem>());
             newsList.setAdapter(newsAdapter);
             newsList.setEmptyView(findViewById(R.id.emptyListView));
-            //getNews.execute("http://content.guardianapis.com/search?q=debates&api-key=test");
             LoaderManager loaderManager = getLoaderManager();
-            loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
+            loaderManager.initLoader(NEWS_LOADER_ID, null, this);
             newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     public Loader<List<NewsItem>> onCreateLoader(int i, Bundle bundle) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        Uri baseUri = Uri.parse(REQUEST_URL);
+        Uri baseUri = Uri.parse(NEWS_REQUEST_URL);
         String newsEntries = sharedPrefs.getString(
                 getString(R.string.settings_news_entries_key),
                 getString(R.string.settings_news_entries_default));
