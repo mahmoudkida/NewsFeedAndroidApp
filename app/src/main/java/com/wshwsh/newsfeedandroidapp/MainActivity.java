@@ -5,8 +5,10 @@ import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -79,8 +81,18 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public Loader<List<NewsItem>> onCreateLoader(int i, Bundle bundle) {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        Uri baseUri = Uri.parse(REQUEST_URL);
+        String newsEntries = sharedPrefs.getString(
+                getString(R.string.settings_news_entries_key),
+                getString(R.string.settings_news_entries_default));
+
+        // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter("page-size", newsEntries);
         // Create a new loader for the given URL
-        return new NewsLoader(this, REQUEST_URL);
+        return new NewsLoader(this, uriBuilder.toString());
     }
 
     @Override

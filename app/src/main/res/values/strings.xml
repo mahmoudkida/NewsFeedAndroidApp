@@ -7,4 +7,7 @@
     <string name="AuthorLabel">Author: </string>
     <string name="ArrowDescription">Arrow icon to indecate pen new tab</string>
     <string name="NewsImageDescrition">News Main Image</string>
+    <string name="settings_news_entries_label">Number of news entries</string>
+    <string name="settings_news_entries_default" translatable="false">10</string>
+    <string name="settings_news_entries_key" translatable="false">news_entries</string>
 </resources>
