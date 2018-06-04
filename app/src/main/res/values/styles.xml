@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="NewsMetaData">
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginStart">10dp</item>
@@ -13,6 +14,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:paddingBottom">15dp</item>
     </style>
+
     <style name="NewsAuthor">
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginStart">8dp</item>
@@ -20,14 +22,12 @@
         <item name="android:layout_weight">1</item>
         <item name="android:paddingBottom">8dp</item>
     </style>
+
     <style name="NewsTitle">
         <item name="android:layout_marginLeft">8dp</item>
-        <item name="android:layout_marginRight">12dp</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_marginTop">12dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:paddingEnd">30dp</item>
-        <item name="android:paddingRight">30dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:layout_marginTop">8dp</item>
         <item name="android:textSize">18sp</item>
     </style>
 </resources>
